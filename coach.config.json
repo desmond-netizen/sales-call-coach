@@ -10,7 +10,7 @@
     "anthropic_model": "claude-sonnet-5-5",
     "claude_code_model": "",
     "effort": "medium",
-    "fallbacks": true,
+    "fallbacks": false,
     "max_retries": 4
   },
 
