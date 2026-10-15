@@ -1,0 +1,195 @@
+{
+  "_help": "Edit reps, offer, pains and objections for your own business. Labels (the keys) are short ids; name is what the report shows. Run `python3 sales_coach.py init` to copy this file into the folder you run from.",
+
+  "reps": ["Jordan Blake", "Priya Shah"],
+  "team_domain": "",
+  "offer": "a B2B service sold on a monthly retainer (for example marketing, lead generation, software setup or consulting), usually with a setup fee",
+
+  "model": {
+    "backend": "auto",
+    "anthropic_model": "claude-sonnet-5-5",
+    "claude_code_model": "",
+    "effort": "medium",
+    "fallbacks": true,
+    "max_retries": 4
+  },
+
+  "thresholds": {
+    "confidence": 0.6,
+    "quote_match": 0.85,
+    "min_quote_words": 4,
+    "firm_next_step": 2,
+    "deep_discovery": 2,
+    "max_rep_talk_share": 0.6,
+    "min_calls_for_priority": 2
+  },
+
+  "chunk_chars": 22000,
+  "workers": 4,
+  "cache": "coach_cache.sqlite",
+  "reports_dir": "reports",
+
+  "pains": {
+    "not_enough_leads": {
+      "name": "Not enough leads",
+      "description": "Not enough new leads or customers coming in; lead flow is low or depends on referrals and word of mouth."
+    },
+    "low_lead_quality": {
+      "name": "Low quality leads",
+      "description": "The leads they do get are poor quality: unqualified, tire kickers, no budget, shared or recycled leads."
+    },
+    "leads_not_converting": {
+      "name": "Leads not converting",
+      "description": "Leads come in but do not turn into booked appointments, shows or sales: slow follow-up, no-shows, low close rate."
+    },
+    "burned_by_vendors": {
+      "name": "Burned by past vendors",
+      "description": "A previous agency, consultant, freelancer or vendor took their money and did not deliver results."
+    },
+    "marketing_not_profitable": {
+      "name": "Current marketing not profitable",
+      "description": "Their own paid ads or marketing spend is not working: high cost per lead, low return, wasted spend."
+    },
+    "lead_sources_too_expensive": {
+      "name": "Lead sources too expensive",
+      "description": "Paying too much per lead or per customer from lead marketplaces, paid directories, search ads or lead brokers."
+    },
+    "owner_time_bottleneck": {
+      "name": "Owner has no time",
+      "description": "The owner or lead decision maker is stretched too thin and has no time to do marketing, sales or follow-up themselves."
+    },
+    "no_system_in_place": {
+      "name": "No system or presence",
+      "description": "They have no real growth engine yet: weak or no website, funnel, process, online presence, content or strategy; often a new or relaunching business."
+    },
+    "slow_response": {
+      "name": "Cannot respond fast enough",
+      "description": "They miss calls or cannot answer inquiries quickly or after hours; front desk or intake staff are overloaded."
+    },
+    "inconsistent_revenue": {
+      "name": "Inconsistent revenue",
+      "description": "Revenue is unpredictable: feast or famine months, seasonal slumps, lumpy deal flow."
+    },
+    "growth_plateau": {
+      "name": "Stuck, wants to grow",
+      "description": "The business is stuck at its current size or struggling to expand into a new market, location or service line."
+    },
+    "tech_overwhelm": {
+      "name": "Overwhelmed by tech and tools",
+      "description": "They feel confused or overwhelmed by software, AI or marketing technology and do not know how to use it in their business."
+    },
+    "low_trust_or_visibility": {
+      "name": "Low trust or visibility",
+      "description": "Low brand awareness or credibility: few reviews, unknown in their market, hard to stand out from competitors."
+    },
+    "cash_flow_strain": {
+      "name": "Cash flow strain",
+      "description": "The business is under financial pressure: tight cash flow, debt, recent losses."
+    }
+  },
+
+  "objections": {
+    "price_too_high": {
+      "name": "Price too high",
+      "description": "The setup fee, retainer or overall price is too high or more than they expected.",
+      "play": "Do not defend the number. Go back to the cost of the problem they gave you (lost deals times deal value) and compare the monthly fee to one or two closed deals. Offer structure (split payments, a phased start) before any discount."
+    },
+    "no_budget_now": {
+      "name": "No budget right now",
+      "description": "They cannot afford it right now or have no budget available until later, regardless of value.",
+      "play": "Separate 'no money' from 'not convinced'. Ask what they spend now on things that are not working and position this as moving that budget. If cash is truly not there, offer your entry offer or book a dated follow-up. Do not leave it open."
+    },
+    "extra_costs_on_top": {
+      "name": "Extra costs on top of the fee",
+      "description": "Concern about paying extra costs on top of the service fee (ad spend, software, media, materials) or how much extra budget is required.",
+      "play": "Lay out the full monthly number (fee plus a capped test budget) before they ask. Frame the extra spend as small and capped, scaled only on proof."
+    },
+    "need_partner_approval": {
+      "name": "Needs partner or spouse approval",
+      "description": "They need to check with a spouse, business partner, board or someone else before deciding.",
+      "play": "Ask early who else decides. If someone is missing, book a second call with both of them on it right now instead of letting the prospect relay the pitch."
+    },
+    "need_to_think": {
+      "name": "Need to think about it, send me info",
+      "description": "Stalling: wants to think about it, wants information or a proposal sent over, will get back to you.",
+      "play": "Ask what specifically they need to think through, then handle that one thing on the call. Always leave with a dated next step."
+    },
+    "burned_before_trust": {
+      "name": "Burned before, does not trust vendors",
+      "description": "Distrust from past bad experiences with agencies, consultants or vendors; doubts this will be different.",
+      "play": "Ask what the last vendor did and where it broke. Contrast concretely (speed, who owns the work, reporting cadence) and offer a reference call with a current client."
+    },
+    "will_it_work_for_me": {
+      "name": "Will it work for my business, show me proof",
+      "description": "Doubt the offer will work for their specific industry, market, location or price point; asks for case studies or proof from similar businesses.",
+      "play": "Lead with the closest case study and its numbers. If you have none, say so and frame the first phase as a capped test with clear kill criteria."
+    },
+    "wants_guarantee": {
+      "name": "Wants a guarantee or pay for results",
+      "description": "Wants guaranteed results, pay per lead, pay for performance, refunds or a risk-free trial.",
+      "play": "Guarantee the process (what ships each month, speed to launch, reporting), not the outcome. Offer a short first term instead of pay for performance."
+    },
+    "contract_length": {
+      "name": "Contract length",
+      "description": "Does not want to commit to a multi-month contract or minimum term; prefers month to month.",
+      "play": "Explain why the first phase needs the time (setup, testing, iterations). Offer an exit point after the first proof milestone."
+    },
+    "bad_timing": {
+      "name": "Bad timing",
+      "description": "Not the right time: busy season, slow season, waiting until next quarter or year, other priorities first.",
+      "play": "Tie timing to their own numbers: what does waiting a quarter cost them. Offer a later start date with a deposit to lock it in."
+    },
+    "cannot_handle_more_work": {
+      "name": "Cannot handle more customers",
+      "description": "Worried they lack the staff or capacity to handle or fulfil more leads, customers or work.",
+      "play": "Treat it as a buying signal. Show how the service reduces their load, and start at a smaller volume they can absorb."
+    },
+    "doing_it_themselves": {
+      "name": "Doing it in house or with another vendor",
+      "description": "Plans to do it in house, already has someone doing it, or is using or comparing another vendor.",
+      "play": "Ask what results the in-house person or other vendor is getting on the numbers that matter. Position yourself as the test that beats or complements it."
+    },
+    "automation_skepticism": {
+      "name": "Skeptical of automation or AI",
+      "description": "Doubts about automation or AI itself: customers will not like it, it feels impersonal, it might make mistakes.",
+      "play": "Show a live demo or recording of it working. Stress the human handoff and exactly where a person stays in the loop."
+    },
+    "compliance_or_risk": {
+      "name": "Compliance or legal risk",
+      "description": "Concerns about legal, regulatory, licensing, privacy or platform rules in their industry.",
+      "play": "Show your experience in their regulated vertical (approvals, reviews, what you will not do) before they bring it up."
+    },
+    "channel_skepticism": {
+      "name": "Doubts the channel works",
+      "description": "Belief that a specific channel (for example social ads, cold email or search) brings low quality leads or that their buyers are not there.",
+      "play": "Explain the filters that remove tire kickers and share cost per booked appointment or per sale, not cost per lead."
+    },
+    "time_commitment_required": {
+      "name": "Too much of my time",
+      "description": "Worried about how much of their own time or effort it will take: onboarding, approvals, content, calls.",
+      "play": "Spell out exactly how much of their time the first 30 days take (one kickoff, one approval round) and what your team does for them."
+    }
+  },
+
+  "handling_levels": [
+    "The prospect did not raise this objection in the excerpt.",
+    "Raised, but the rep ignored it, argued, got defensive, or immediately dropped price or terms without exploring it.",
+    "Raised, and the rep gave a generic answer without finding the real concern or checking the prospect was satisfied.",
+    "Raised, and the rep clarified the real concern and answered it with a specific reframe, proof, or option.",
+    "Raised, the rep clarified it, answered with specific proof or a reframe tied to the prospect's own goals or numbers, and the prospect accepted the answer or moved forward."
+  ],
+
+  "discovery_levels": [
+    "No discovery questions in this excerpt: all pitch, logistics or small talk.",
+    "A few surface questions (what do you do, how many leads) with little follow-up.",
+    "Asks about current situation, goals and what they have tried, with some follow-up questions.",
+    "Digs into root causes, impact and urgency: why now, what the problem costs them, what happens if nothing changes."
+  ],
+
+  "next_step_levels": [
+    "No next step, or the prospect declined or was disqualified.",
+    "Vague: the prospect will think about it, the rep will send information, 'let's touch base', with no date set.",
+    "A specific follow-up meeting is booked with a date or time, or a firm decision deadline is agreed.",
+    "The prospect committed on the call: agreed to buy, paid, signed, or booked onboarding."
+  ]
+}

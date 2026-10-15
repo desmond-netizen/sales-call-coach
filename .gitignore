@@ -1,0 +1,8 @@
+coach_cache.sqlite
+*.sqlite
+*.sqlite-journal
+reports/
+.env
+__pycache__/
+*.pyc
+.DS_Store
