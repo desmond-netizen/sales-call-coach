@@ -17,7 +17,7 @@ That is the difference between a report you can show your team and a report you 
 Needs Python 3.9 or newer. No other dependencies for the mock and Claude Code backends.
 
 ```bash
-git clone <this repo>
+git clone https://github.com/desmond-netizen/sales-call-coach.git
 cd sales-call-coach
 
 # 1. See it work offline on the fictional sample calls (free, no model)
